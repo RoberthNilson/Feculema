@@ -24,27 +24,38 @@ body {
 /* ✅ Cabeçalho */
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
   background: var(--azul-iema);
-  padding: 18px 40px;
+  padding: 25px 50px;
+  position: relative;
   color: var(--branco);
 }
 
 .logo-img {
-  height: 60px;
+  height: 65px;
+}
+
+.logo {
+  position: absolute;
+  left: 30px;
 }
 
 .titulo {
-  font-size: 1.9rem;
+  font-size: 2.1rem;
   font-weight: bold;
 }
 
-/* ✅ Menu Desktop */
+/* ✅ Menu */
+.navbar {
+  position: absolute;
+  right: 30px;
+}
+
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 22px;
+  gap: 20px;
 }
 
 .nav-links a {
@@ -52,8 +63,8 @@ body {
   text-decoration: none;
   font-weight: 600;
   padding: 8px 12px;
+  transition: 0.3s;
   border-radius: 6px;
-  transition: .3s;
 }
 
 .nav-links a:hover {
@@ -61,20 +72,11 @@ body {
   color: var(--azul-iema);
 }
 
-/* ✅ BOTÃO MENU MOBILE */
-.menu-btn {
-  display: none;
-  font-size: 30px;
-  cursor: pointer;
-  color: var(--branco);
-}
-
-/* ✅ Containers gerais */
+/* ✅ Containers e títulos de seção */
 .container {
-  width: 90%;
   max-width: 1150px;
   margin: auto;
-  padding: 45px 0;
+  padding: 45px 22px;
 }
 
 h3 {
@@ -83,22 +85,22 @@ h3 {
   text-transform: uppercase;
   font-size: 1.4rem;
   font-weight: bold;
+  letter-spacing: 1px;
 }
 
-/* ✅ Hero */
+/* ✅ Seção Hero */
 .hero {
-  background: var(--branco);
   border-radius: 12px;
-  padding: 65px 25px;
+  padding: 80px 25px;
   text-align: center;
   color: var(--azul-iema);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.10);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
 .hero-text h2 {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 /* ✅ Grid das Danças */
@@ -110,77 +112,68 @@ h3 {
 
 .dance-card {
   background: var(--branco);
-  padding: 22px;
+  padding: 18px;
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: 0.3s;
   border-left: 6px solid var(--azul-iema);
-  transition: .3s;
 }
 
 .dance-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
   border-left-color: var(--amarelo-iema);
 }
 
 .dance-card h4 {
+  margin-bottom: 8px;
   font-size: 1.2rem;
   color: var(--azul-iema);
-  margin-bottom: 6px;
 }
 
 /* ✅ Curiosidades */
 .curiosidades ul {
   list-style: none;
+  padding-left: 8px;
 }
 
 .curiosidades li {
-  margin: 10px 0;
+  margin: 8px 0;
   padding-left: 10px;
   border-left: 4px solid var(--amarelo-iema);
 }
 
-/* ✅ Footer */
+/* ✅ Rodapé */
 .footer {
   background: var(--azul-iema);
-  color: var(--branco);
   text-align: center;
-  padding: 16px;
-  font-size: .9rem;
+  color: var(--branco);
+  padding: 18px;
+  font-size: 0.9rem;
   margin-top: 40px;
 }
 
-/* 📱 MODO MOBILE */
+/* ✅ Modo Responsivo */
 @media (max-width: 850px) {
 
   .header {
-    padding: 15px 20px;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    padding-bottom: 30px;
+  }
+
+  .logo,
+  .navbar {
+    position: static;
+  }
+
+  .nav-links {
+    margin-top: 12px;
   }
 
   .titulo {
-    font-size: 1.4rem;
+    font-size: 1.7rem;
   }
-
-  /* Menu fica escondido no mobile */
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 75px;
-    right: 0;
-    background: var(--azul-iema);
-    flex-direction: column;
-    width: 100%;
-    padding: 18px 0;
-    text-align: center;
-    gap: 15px;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  /* Ícone hambúrguer aparece */
-  .menu-btn {
-    display: block;
-  }
-}
+}  recrie
