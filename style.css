@@ -1,0 +1,179 @@
+/* 🎨 Cores oficiais do IEMA */
+:root {
+  --azul-iema: #004080;
+  --amarelo-iema: #f0c040;
+  --cinza-claro: #f7f8fa;
+  --cinza-escuro: #353535;
+  --branco: #ffffff;
+}
+
+/* Reset e padrões */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background: var(--cinza-claro);
+  color: var(--cinza-escuro);
+  line-height: 1.6;
+}
+
+/* ✅ Cabeçalho */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--azul-iema);
+  padding: 25px 50px;
+  position: relative;
+  color: var(--branco);
+}
+
+.logo-img {
+  height: 65px;
+}
+
+.logo {
+  position: absolute;
+  left: 30px;
+}
+
+.titulo {
+  font-size: 2.1rem;
+  font-weight: bold;
+}
+
+/* ✅ Menu */
+.navbar {
+  position: absolute;
+  right: 30px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: var(--branco);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 12px;
+  transition: 0.3s;
+  border-radius: 6px;
+}
+
+.nav-links a:hover {
+  background: var(--amarelo-iema);
+  color: var(--azul-iema);
+}
+
+/* ✅ Containers e títulos de seção */
+.container {
+  max-width: 1150px;
+  margin: auto;
+  padding: 45px 22px;
+}
+
+h3 {
+  margin-bottom: 25px;
+  color: var(--azul-iema);
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* ✅ Seção Hero */
+.hero {
+  border-radius: 12px;
+  padding: 80px 25px;
+  text-align: center;
+  color: var(--azul-iema);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.hero-text h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* ✅ Grid das Danças */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.dance-card {
+  background: var(--branco);
+  padding: 18px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  border-left: 6px solid var(--azul-iema);
+}
+
+.dance-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+  border-left-color: var(--amarelo-iema);
+}
+
+.dance-card h4 {
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+  color: var(--azul-iema);
+}
+
+/* ✅ Curiosidades */
+.curiosidades ul {
+  list-style: none;
+  padding-left: 8px;
+}
+
+.curiosidades li {
+  margin: 8px 0;
+  padding-left: 10px;
+  border-left: 4px solid var(--amarelo-iema);
+}
+
+/* ✅ Rodapé */
+.footer {
+  background: var(--azul-iema);
+  text-align: center;
+  color: var(--branco);
+  padding: 18px;
+  font-size: 0.9rem;
+  margin-top: 40px;
+}
+
+/* ✅ Modo Responsivo */
+@media (max-width: 850px) {
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    padding-bottom: 30px;
+  }
+
+  .logo,
+  .navbar {
+    position: static;
+  }
+
+  .nav-links {
+    margin-top: 12px;
+  }
+
+  .titulo {
+    font-size: 1.7rem;
+  }
+}

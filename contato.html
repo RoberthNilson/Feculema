@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contato - IEMA Pleno Carolina</title>
+  <link rel="stylesheet" href="contato.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- Cabeçalho -->
+  <header class="header">
+    <div class="logo">
+      <img src="fotos/logo.png" alt="Logo IEMA" class="logo-img">
+    </div>
+    <h1 class="titulo">Contato - IEMA Pleno Carolina</h1>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="contato.html" class="active">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Seção Contato -->
+  <section id="contato" class="container card contact">
+    <h2>Agendamento de Participação</h2>
+    <p>Preencha as informações abaixo para agendar sua participação nas apresentações culturais.</p>
+
+    <div class="contact-wrapper">
+
+      <!-- Formulário -->
+      <form id="formContato" method="POST" class="contact-form" autocomplete="off">
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+
+        <label for="quantidade">Quantidade de Participantes:</label>
+        <select id="quantidade" name="quantidade" required>
+          <option value="">Selecione</option>
+          <option value="1 a 4 pessoas">1 a 4 pessoas</option>
+          <option value="4 a 8 pessoas">4 a 8 pessoas</option>
+          <option value="8 a 12 pessoas">8 a 12 pessoas</option>
+          <option value="12 a 16 pessoas">12 a 16 pessoas</option>
+        </select>
+
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" name="cidade" placeholder="Digite sua cidade" required>
+
+        <label for="data">Data do Evento Cultural:</label>
+        <select id="data" name="data" required>
+          <option value="">Selecione a data</option>
+          <option value="2025-11-20">20/11/2025 - Consciência Negra</option>
+          <option value="2025-06-24">24/06/2025 - Festas Juninas</option>
+          <option value="2025-09-07">07/09/2025 - Independência do Brasil</option>
+          <option value="2025-12-01">01/12/2025 - Evento Cultural IEMA</option>
+        </select>
+
+        <button type="submit">Enviar</button>
+      </form>
+
+      <!-- Contato e Redes Sociais -->
+      <div class="info-contato">
+        <h3>Informações de Contato</h3>
+        <p>Email: <a href="mailto:Roberthnilson3@gmail.com">Roberthnilson3@gmail.com</a></p>
+        <p>Telefone: (63) 99210-4788</p>
+        <p>Endereço: Rua Gonçalves Dias, Carolina - MA</p>
+
+        <h3>Redes Sociais</h3>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/robe_rth13" target="_blank" class="fab fa-instagram"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    © 2025 - IEMA Pleno Carolina — Cultura e Tradição
+  </footer>
+
+  <!-- Script para limpar o formulário após envio no futuro -->
+  <script>
+    document.getElementById("formContato").addEventListener("submit", function (event) {
+      event.preventDefault(); // impede envio até o backend estar pronto
+
+      // Aqui futuramente faremos integração com banco
+      this.reset(); // limpa o formulário
+    });
+  </script>
+
+</body>
+
+</html>
