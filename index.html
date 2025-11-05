@@ -2,9 +2,9 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IEMA - Danças Típicas de Maranhão</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IEMA - Danças Típicas do Maranhão</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -15,10 +15,16 @@
     <div class="logo">
       <img src="fotos/logo.png" alt="Logo IEMA" class="logo-img">
     </div>
+
     <h1 class="titulo">IEMA Pleno - Carolina</h1>
+
+    <!-- Menu Hambúrguer -->
+    <span class="menu-btn">&#9776;</span>
+
+    <!-- Navegação -->
     <nav class="navbar">
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="galeria.html">Galeria</a></li>
         <li><a href="contato.html">Contato</a></li>
       </ul>
@@ -28,42 +34,41 @@
   <!-- Seção Hero -->
   <section id="home" class="hero container">
     <div class="hero-text">
-      <h2>Danças Típicas de Maranhão</h2>
-      <p>Conheça as manifestações culturais que fazem parte da alma carolinense.
-        Ritmos, cores e tradições que mantêm viva a identidade do povo do Maranhão.</p>
+      <h2>Danças Típicas do Maranhão</h2>
+      <p>
+        Explore a cultura vibrante que mantém viva a tradição do povo maranhense,
+        especialmente em Carolina — Portal da Chapada das Mesas!
+      </p>
     </div>
   </section>
 
   <!-- Danças -->
   <section id="dancas" class="container">
     <h3>Principais Danças em Carolina</h3>
+
     <div class="grid">
 
       <article class="dance-card">
         <h4>Sálambisco</h4>
-        <p>Dança tradicional muito presente nas festas populares do Maranhão,
-          com passos marcados e muita alegria.</p>
+        <p>Dança popular com passos marcados e grande animação, presente em festas do Maranhão.</p>
       </article>
 
       <article class="dance-card">
         <h4>Bumba Meu Boi</h4>
-        <p>Apresentação que mistura teatro, música e dança.
-          Representa a morte e ressurreição do boi, símbolo da fé popular maranhense.</p>
+        <p>Encena a morte e ressurreição do boi em uma mistura de música, teatro e dança.</p>
       </article>
 
       <article class="dance-card">
         <h4>Cacuriá</h4>
-        <p>Dança contagiante presente nas festas juninas e religiosas.
-          Surgiu após o festejo do Divino Espírito Santo, com tambores e muita animação.</p>
+        <p>Ritmo contagiante de origem religiosa, com tambores e muita celebração nas festas juninas.</p>
       </article>
 
       <article class="dance-card">
         <h4>Festa do Divino Espírito Santo</h4>
-        <p>Uma das celebrações mais importantes da cidade, com cortejos, cânticos
-          e danças que envolvem toda a comunidade em devoção e alegria.</p>
+        <p>
+          Manifestação cultural que envolve cortejos, cantos e danças com a participação da comunidade.
+        </p>
       </article>
-
-   
 
     </div>
   </section>
@@ -73,9 +78,9 @@
     <h3>Curiosidades da Cultura Carolinense</h3>
     <ul>
       <li>Carolina é conhecida como “Portal da Chapada das Mesas”.</li>
-      <li>As festas religiosas do Divino Espírito Santo e São Pedro de Alcântara mantêm as cultura vivas na cidade.</li>
-      <li>As influências afro, indígenas e portuguesas formam a identidade cultural da região.</li>
-      <li>Grupos culturais locais preservam essa história por meio das apresentações folclóricas.</li>
+      <li>Festas religiosas como a do Divino e a de São Pedro preservam a tradição local.</li>
+      <li>A cultura regional é marcada por influências indígenas, africanas e portuguesas.</li>
+      <li>Grupos folclóricos mantém viva a identidade maranhense através da arte.</li>
     </ul>
   </section>
 
@@ -83,6 +88,16 @@
   <footer class="footer">
     <p>© 2025 - IEMA Pleno Carolina — Cultura, Tradição e Educação</p>
   </footer>
+
+  <!-- Script do Menu Mobile -->
+  <script>
+    const menuBtn = document.querySelector(".menu-btn");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
 
 </body>
 
