@@ -176,4 +176,9 @@ h3 {
   .titulo {
     font-size: 1.7rem;
   }
-}  recrie
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
