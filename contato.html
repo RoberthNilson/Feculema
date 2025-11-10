@@ -34,7 +34,7 @@
     <div class="contact-wrapper">
 
       <!-- Formulário -->
-      <form id="formContato" method="POST" class="contact-form" autocomplete="off">
+      <form id="formContato" name="Contato" class="contact-form" autocomplete="off">
 
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
@@ -61,6 +61,9 @@
         </select>
 
         <button type="submit">Enviar</button>
+
+        <!-- 💬 Mensagem de retorno -->
+        <div id="mensagem" class="mensagem"></div>
       </form>
 
       <!-- Contato e Redes Sociais -->
@@ -83,16 +86,73 @@
     © 2025 - IEMA Pleno Carolina — Cultura e Tradição
   </footer>
 
-  <!-- Script para limpar o formulário após envio no futuro -->
-  <script>
-    document.getElementById("formContato").addEventListener("submit", function (event) {
-      event.preventDefault(); // impede envio até o backend estar pronto
+  <!-- 🔥 Firebase Realtime Database Script -->
+  <script type="module">
+    // Importar módulos necessários do Firebase
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 
-      // Aqui futuramente faremos integração com banco
-      this.reset(); // limpa o formulário
+    // ⚙️ Configuração do Firebase (coloque seus dados aqui)
+    const firebaseConfig = {
+        apiKey: "AIzaSyB_kd968jusDQk5Q1ovrwt9rKYm8ENTlzg",
+  authDomain: "iema-44af2.firebaseapp.com",
+  databaseURL: "https://iema-44af2-default-rtdb.firebaseio.com",
+  projectId: "iema-44af2",
+  storageBucket: "iema-44af2.firebasestorage.app",
+  messagingSenderId: "478234533219",
+  appId: "1:478234533219:web:f70451beb12703a11f4756",
+  measurementId: "G-C3CMJJ1ZEX"
+    };
+
+    // Inicializa o Firebase e o Realtime Database
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const form = document.getElementById("formContato");
+    const mensagem = document.getElementById("mensagem");
+
+    // Função para mostrar mensagens
+    function mostrarMensagem(texto, tipo) {
+      mensagem.textContent = texto;
+      mensagem.className = `mensagem ${tipo}`;
+      mensagem.style.display = "block";
+
+      // Oculta após 5 segundos
+      setTimeout(() => {
+        mensagem.style.display = "none";
+      }, 5000);
+    }
+
+    // Evento de envio do formulário
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const nome = document.getElementById("nome").value;
+      const quantidade = document.getElementById("quantidade").value;
+      const cidade = document.getElementById("cidade").value;
+      const dataEvento = document.getElementById("data").value;
+
+      // Cria nova referência no banco
+      const novaRef = push(ref(db, "agendamentos"));
+
+      // Envia os dados
+      set(novaRef, {
+        nome: nome,
+        quantidade: quantidade,
+        cidade: cidade,
+        dataEvento: dataEvento,
+        enviadoEm: new Date().toISOString()
+      })
+        .then(() => {
+          mostrarMensagem("✅ Agendamento enviado com sucesso!", "sucesso");
+          form.reset();
+        })
+        .catch((error) => {
+          console.error("Erro:", error);
+          mostrarMensagem("❌ Erro ao salvar. Tente novamente.", "erro");
+        });
     });
   </script>
 
 </body>
-
 </html>
