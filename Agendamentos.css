@@ -1,0 +1,155 @@
+:root {
+    --azul-iema: #004080;
+    --amarelo-iema: #f0c040;
+    --cinza-claro: #f7f8fa;
+    --branco: #fff;
+    --preto-suave: #222;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--cinza-claro);
+    color: var(--preto-suave);
+    line-height: 1.6;
+}
+
+/* Cabeçalho */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--azul-iema);
+    padding: 25px 50px;
+    position: relative;
+    color: var(--branco);
+}
+
+.logo-img {
+    height: 60px;
+}
+
+.logo {
+    position: absolute;
+    left: 30px;
+}
+
+.titulo {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Navbar */
+.navbar {
+    position: absolute;
+    right: 30px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links .ativo {
+    background: var(--amarelo-iema);
+    color: #000;
+}
+
+/* Conteúdo */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* Texto */
+#lista-agendamentos h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    border-left: 6px solid var(--azul-iema);
+    padding-left: 12px;
+}
+
+#lista-agendamentos p {
+    margin-bottom: 20px;
+    color: #444;
+}
+
+/* ✅ Tabela */
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--branco);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.tabela thead {
+    background: var(--azul-iema);
+    color: var(--branco);
+}
+
+.tabela th, .tabela td {
+    padding: 14px;
+    font-size: 15px;
+}
+
+.tabela tbody tr:nth-child(even) {
+    background: var(--cinza-claro);
+}
+
+.tabela tbody tr:hover {
+    background: var(--amarelo-iema);
+    color: #000;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+/* Rodapé */
+.footer {
+    background: var(--azul-iema);
+    text-align: center;
+    color: var(--branco);
+    padding: 18px;
+    margin-top: 237px;
+}
+
+/* Responsivo */
+@media (max-width: 850px) {
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .logo,
+    .navbar {
+        position: static;
+    }
+
+    .titulo {
+        font-size: 1.7rem;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

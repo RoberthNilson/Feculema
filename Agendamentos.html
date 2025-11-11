@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamentos - IEMA Pleno Carolina</title>
+  <link rel="stylesheet" href="Agendamentos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- Cabeçalho -->
+  <header class="header">
+    <div class="logo">
+      <img src="fotos/logo.png" alt="Logo IEMA" class="logo-img">
+    </div>
+    <h1 class="titulo">Lista de Agendamentos</h1>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Agendamentos.html" class="active">Agendamentos</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="lista-agendamentos" class="container card">
+    <h2>Participações Confirmadas</h2>
+    <p>Aqui está a lista de agendamentos realizados:</p>
+
+    <table class="tabela" id="tabelaAgendamentos">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Cidade</th>
+          <th>Qtd. Pessoas</th>
+          <th>Evento</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dados preenchidos pelo Firebase -->
+      </tbody>
+    </table>
+  </section>
+
+  <footer class="footer">
+    © 2025 - IEMA Pleno Carolina — Cultura e Tradição
+  </footer>
+
+  <!-- Firebase Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB_kd968jusDQk5Q1ovrwt9rKYm8ENTlzg",
+      authDomain: "iema-44af2.firebaseapp.com",
+      databaseURL: "https://iema-44af2-default-rtdb.firebaseio.com",
+      projectId: "iema-44af2",
+      storageBucket: "iema-44af2.firebasestorage.app",
+      messagingSenderId: "478234533219",
+      appId: "1:478234533219:web:f70451beb12703a11f4756",
+      measurementId: "G-C3CMJJ1ZEX"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const tabela = document.getElementById("tabelaAgendamentos").querySelector("tbody");
+
+    const agendamentosRef = ref(db, "agendamentos");
+
+    onValue(agendamentosRef, (snapshot) => {
+      tabela.innerHTML = ""; // Limpa antes de preencher
+      snapshot.forEach((childSnapshot) => {
+        const dados = childSnapshot.val();
+        
+        const row = `
+          <tr>
+            <td>${dados.nome}</td>
+            <td>${dados.cidade}</td>
+            <td>${dados.quantidade}</td>
+            <td>${dados.nomeEvento}</td>
+            <td>${new Date(dados.dataEvento).toLocaleDateString("pt-BR")}</td>
+          </tr>
+        `;
+        tabela.innerHTML += row;
+      });
+    });
+  </script>
+
+</body>
+</html>
