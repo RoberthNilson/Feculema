@@ -1,11 +1,10 @@
-/* 🎨 Cores Oficiais IEMA */
+/* 🎨 Cores oficiais do IEMA */
 :root {
   --azul-iema: #004080;
   --amarelo-iema: #f0c040;
   --cinza-claro: #f7f8fa;
   --cinza-escuro: #353535;
   --branco: #ffffff;
-  --sombra: rgba(0, 0, 0, 0.12);
 }
 
 /* Reset e padrões */
@@ -22,108 +21,87 @@ body {
   line-height: 1.6;
 }
 
-/* ============================ */
-/* Cabeçalho e Navbar */
-/* ============================ */
+/* ✅ Cabeçalho */
 .header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-between; /* logo esquerda, navbar direita */
   background: var(--azul-iema);
-  padding: 15px 35px;
-  position: relative;
+  padding: 18px 40px;
   color: var(--branco);
-  box-shadow: 0 2px 8px var(--sombra);
-}
-
-.logo {
-  display: flex;
-  align-items: center;
 }
 
 .logo-img {
-  height: 50px;
+  height: 60px;
 }
 
 .titulo {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   font-weight: bold;
-  margin-left: 10px;
 }
 
-/* Navbar */
-.navbar {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
+/* ✅ Menu Desktop */
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 18px;
+  gap: 22px;
 }
 
 .nav-links a {
   color: var(--branco);
   text-decoration: none;
   font-weight: 600;
-  padding: 6px 10px;
+  padding: 8px 12px;
   border-radius: 6px;
-  transition: 0.3s;
+  transition: .3s;
 }
 
-.nav-links a:hover,
-.nav-links .active {
+.nav-links a:hover {
   background: var(--amarelo-iema);
   color: var(--azul-iema);
 }
 
-/* Botão Menu Mobile */
+/* ✅ BOTÃO MENU MOBILE */
 .menu-btn {
   display: none;
-  font-size: 28px;
+  font-size: 30px;
   cursor: pointer;
   color: var(--branco);
 }
 
-/* ============================ */
-/* Containers e seções */
-/* ============================ */
+/* ✅ Containers gerais */
 .container {
+  width: 90%;
   max-width: 1150px;
   margin: auto;
-  padding: 45px 22px;
-}
-
-h2, h3 {
-  color: var(--azul-iema);
-  font-weight: bold;
+  padding: 45px 0;
 }
 
 h3 {
   margin-bottom: 25px;
+  color: var(--azul-iema);
   text-transform: uppercase;
   font-size: 1.4rem;
-  letter-spacing: 1px;
+  font-weight: bold;
 }
 
-/* Hero */
+/* ✅ Hero */
 .hero {
+  background: var(--branco);
   border-radius: 12px;
-  padding: 80px 25px;
+  padding: 65px 25px;
   text-align: center;
   color: var(--azul-iema);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.10);
 }
 
 .hero-text h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
-/* Grid de Danças */
+/* ✅ Grid das Danças */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -132,97 +110,82 @@ h3 {
 
 .dance-card {
   background: var(--branco);
-  padding: 18px;
+  padding: 22px;
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: 0.3s;
   border-left: 6px solid var(--azul-iema);
+  transition: .3s;
 }
 
 .dance-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
   border-left-color: var(--amarelo-iema);
 }
 
 .dance-card h4 {
-  margin-bottom: 8px;
   font-size: 1.2rem;
   color: var(--azul-iema);
+  margin-bottom: 6px;
 }
 
-/* Curiosidades */
+/* ✅ Curiosidades */
 .curiosidades ul {
   list-style: none;
-  padding-left: 8px;
 }
 
 .curiosidades li {
-  margin: 8px 0;
+  margin: 10px 0;
   padding-left: 10px;
   border-left: 4px solid var(--amarelo-iema);
 }
 
-/* Rodapé */
+/* ✅ Footer */
 .footer {
   background: var(--azul-iema);
-  text-align: center;
   color: var(--branco);
-  padding: 18px;
-  font-size: 0.9rem;
+  text-align: center;
+  padding: 16px;
+  font-size: .9rem;
   margin-top: 40px;
 }
 
-/* ============================ */
-/* Responsividade */
-/* ============================ */
+/* 📱 MODO MOBILE */
 @media (max-width: 850px) {
 
   .header {
-    flex-direction: column;
-    text-align: center;
-    gap: 8px;
-    padding-bottom: 20px;
+    padding: 15px 20px;
   }
 
-  .logo,
-  .navbar {
-    position: static;
-    width: 100%;
+  .titulo {
+    font-size: 1.4rem;
   }
 
+  /* Menu fica escondido no mobile */
   .nav-links {
-    display: none; /* escondido inicialmente */
+    display: none;
+    position: absolute;
+    top: 75px;
+    right: 0;
+    background: var(--azul-iema);
     flex-direction: column;
     width: 100%;
-    margin-top: 10px;
-    gap: 10px;
+    padding: 18px 0;
+    text-align: center;
+    gap: 15px;
   }
 
   .nav-links.active {
-    display: flex; /* aparece quando o menu é ativado */
-  }
-
-  .menu-btn {
-    display: block;
-  }
-
-  .titulo {
-    font-size: 1.5rem;
+    display: flex;
   }
 }
 
-@media (max-width: 500px) {
-  .titulo {
-    font-size: 1.3rem;
-  }
-
-  .hero {
-    padding: 50px 15px;
-  }
-
+@media screen and (max-width: 768px) {
   .container {
-    padding: 20px 15px;
+    width: 100%;
+    flex-direction: column;
+  }
+  h1{
+    font-size: 1.5rem;
   }
 }
