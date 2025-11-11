@@ -1,3 +1,4 @@
+/* 🎨 Paleta de Cores IEMA */
 :root {
     --azul-iema: #004080;
     --amarelo-iema: #f0c040;
@@ -6,64 +7,64 @@
     --preto-suave: #222;
 }
 
-/* Ajuste universal */
-html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: Arial, sans-serif;
     background: var(--cinza-claro);
     color: var(--preto-suave);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
     line-height: 1.6;
 }
 
-/* Cabeçalho */
+/* ✅ Cabeçalho */
 .header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     background: var(--azul-iema);
-    padding: 15px 20px;
+    padding: 25px 50px;
+    position: relative;
     color: var(--branco);
-    width: 100%;
 }
 
 .logo-img {
-    height: 50px;
+    height: 60px;
+}
+
+.logo {
+    position: absolute;
+    left: 30px;
 }
 
 .titulo {
-    font-size: 1.7rem;
+    font-size: 2rem;
     font-weight: bold;
-    text-align: center;
-    flex-grow: 1;
-    padding: 0 10px;
 }
 
-/* Navbar */
+/* ✅ Navbar */
 .navbar {
-    margin-left: auto;
+    position: absolute;
+    right: 30px;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 15px;
+    gap: 20px;
 }
 
 .nav-links a {
     color: var(--branco);
     text-decoration: none;
+    font-weight: 600;
     padding: 8px 12px;
     border-radius: 6px;
     transition: 0.3s;
-    font-weight: 600;
 }
 
 .nav-links a:hover,
@@ -72,45 +73,40 @@ body {
     color: #000;
 }
 
-/* Botão Mobile */
-.menu-btn {
-    display: none;
-    font-size: 28px;
-    background: none;
-    border: none;
-    color: var(--branco);
-    cursor: pointer;
-}
-
-/* Conteúdo */
+/* ✅ Conteúdo */
 .container {
-    flex: 1;
-    width: 100%;
-    max-width: 1100px;
+    max-width: 1000px;
     margin: auto;
-    padding: 25px 15px;
+    padding: 40px 20px;
 }
 
+/* Textos da seção */
 #lista-agendamentos h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 15px;
     border-left: 6px solid var(--azul-iema);
     padding-left: 12px;
 }
 
+#lista-agendamentos p {
+    margin-bottom: 20px;
+    color: #444;
+}
+
 /* ✅ Tabela Responsiva */
-.tabela-responsiva {
-    overflow-x: auto;
+.tabela-container {
     width: 100%;
+    overflow-x: auto;
+    background: var(--branco);
+    border-radius: 12px;
+    padding: 5px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 .tabela {
     width: 100%;
+    min-width: 600px;
     border-collapse: collapse;
-    background: var(--branco);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
 }
 
 .tabela thead {
@@ -118,11 +114,10 @@ body {
     color: var(--branco);
 }
 
-.tabela th,
-.tabela td {
+.tabela th, .tabela td {
     padding: 14px;
+    font-size: 15px;
     text-align: left;
-    white-space: nowrap;
 }
 
 .tabela tbody tr:nth-child(even) {
@@ -132,69 +127,45 @@ body {
 .tabela tbody tr:hover {
     background: var(--amarelo-iema);
     color: #000;
-    cursor: pointer;
     transition: 0.3s;
+    cursor: pointer;
 }
 
-/* Rodapé */
+/* ✅ Rodapé sempre no fim */
 .footer {
     background: var(--azul-iema);
-    color: var(--branco);
     text-align: center;
+    color: var(--branco);
     padding: 18px;
-    width: 100%;
-    margin-top: auto;
+    margin-top: 237px;
 }
 
-/* 📱 RESPONSIVO - CELULAR */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
+/* ✅ Mobile First - Responsivo */
+@media (max-width: 850px) {
+    .header {
         flex-direction: column;
-        width: 100%;
-        background: var(--azul-iema);
+        gap: 10px;
         text-align: center;
-        padding: 15px 0;
-        gap: 8px;
     }
 
-    .navbar.active .nav-links {
-        display: flex;
+    .logo, .navbar {
+        position: static;
     }
 
-    .menu-btn {
-        display: block;
-    }
-
-    .titulo {
-        font-size: 1.4rem;
-    }
-
-    .nav-links a {
-        font-size: 1rem;
-        display: block;
-        width: 100%;
-    }
-
-    .tabela th,
-    .tabela td {
-        font-size: 14px;
-        padding: 10px;
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
 
-/* 📱 SUPER PEQUENO (menor que 450px) */
-@media (max-width: 450px) {
+@media (max-width: 600px) {
     .titulo {
-        font-size: 1.2rem;
-    }
-
-    .logo-img {
-        height: 40px;
+        font-size: 1.5rem;
     }
 
     .tabela th,
     .tabela td {
+        padding: 10px;
         font-size: 13px;
     }
 }
