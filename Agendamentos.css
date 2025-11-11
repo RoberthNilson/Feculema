@@ -6,72 +6,64 @@
     --preto-suave: #222;
 }
 
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Ajuste universal */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
-/* ✅ Garantir que o rodapé fique no fim da página */
 body {
     font-family: Arial, sans-serif;
     background: var(--cinza-claro);
     color: var(--preto-suave);
-    line-height: 1.6;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-}
-
-.container {
-    flex: 1;
+    line-height: 1.6;
 }
 
 /* Cabeçalho */
 .header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     background: var(--azul-iema);
-    padding: 25px 50px;
-    position: relative;
+    padding: 15px 20px;
     color: var(--branco);
+    width: 100%;
 }
 
 .logo-img {
-    height: 60px;
-}
-
-.logo {
-    position: absolute;
-    left: 30px;
+    height: 50px;
 }
 
 .titulo {
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
+    padding: 0 10px;
 }
 
 /* Navbar */
 .navbar {
-    position: absolute;
-    right: 30px;
+    margin-left: auto;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 15px;
 }
 
 .nav-links a {
     color: var(--branco);
     text-decoration: none;
-    font-weight: 600;
     padding: 8px 12px;
     border-radius: 6px;
     transition: 0.3s;
+    font-weight: 600;
 }
 
 .nav-links a:hover,
@@ -80,29 +72,45 @@ body {
     color: #000;
 }
 
-/* Texto */
+/* Botão Mobile */
+.menu-btn {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: var(--branco);
+    cursor: pointer;
+}
+
+/* Conteúdo */
+.container {
+    flex: 1;
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px 15px;
+}
+
 #lista-agendamentos h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-bottom: 15px;
     border-left: 6px solid var(--azul-iema);
     padding-left: 12px;
 }
 
-#lista-agendamentos p {
-    margin-bottom: 20px;
-    color: #444;
+/* ✅ Tabela Responsiva */
+.tabela-responsiva {
+    overflow-x: auto;
+    width: 100%;
 }
 
-/* ✅ Tabela Responsiva */
 .tabela {
     width: 100%;
     border-collapse: collapse;
     background: var(--branco);
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-    display: block;
-    overflow-x: auto; /* ✅ Scroll no celular */
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
 }
 
 .tabela thead {
@@ -113,8 +121,8 @@ body {
 .tabela th,
 .tabela td {
     padding: 14px;
-    font-size: 15px;
-    white-space: nowrap; /* ✅ Evita quebra desorganizada */
+    text-align: left;
+    white-space: nowrap;
 }
 
 .tabela tbody tr:nth-child(even) {
@@ -124,50 +132,69 @@ body {
 .tabela tbody tr:hover {
     background: var(--amarelo-iema);
     color: #000;
-    transition: 0.3s;
     cursor: pointer;
+    transition: 0.3s;
 }
 
-/* ✅ Rodapé fixado corretamente */
+/* Rodapé */
 .footer {
     background: var(--azul-iema);
-    text-align: center;
     color: var(--branco);
+    text-align: center;
     padding: 18px;
-    margin-top: auto; /* ✅ empurra o rodapé para baixo */
+    width: 100%;
+    margin-top: auto;
 }
 
-/* 📱 Responsivo */
-@media (max-width: 850px) {
-    .header {
+/* 📱 RESPONSIVO - CELULAR */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
         flex-direction: column;
-        gap: 10px;
+        width: 100%;
+        background: var(--azul-iema);
         text-align: center;
-        padding: 20px;
+        padding: 15px 0;
+        gap: 8px;
     }
 
-    .logo,
-    .navbar {
-        position: static;
+    .navbar.active .nav-links {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
     }
 
     .titulo {
         font-size: 1.4rem;
     }
 
-    .nav-links {
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 8px;
-    }
-
-    #lista-agendamentos h2 {
-        font-size: 1.5rem;
+    .nav-links a {
+        font-size: 1rem;
+        display: block;
+        width: 100%;
     }
 
     .tabela th,
     .tabela td {
         font-size: 14px;
         padding: 10px;
+    }
+}
+
+/* 📱 SUPER PEQUENO (menor que 450px) */
+@media (max-width: 450px) {
+    .titulo {
+        font-size: 1.2rem;
+    }
+
+    .logo-img {
+        height: 40px;
+    }
+
+    .tabela th,
+    .tabela td {
+        font-size: 13px;
     }
 }
