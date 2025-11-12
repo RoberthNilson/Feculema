@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +7,6 @@
   <link rel="stylesheet" href="contato.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
 <body>
 
   <!-- Cabeçalho -->
@@ -16,7 +14,7 @@
     <div class="logo">
       <img src="fotos/logo.png" alt="Logo IEMA" class="logo-img">
     </div>
-    <h1 class="titulo">IEMA Pleno - Carolina</h1>
+    <h1 class="titulo">Contato - IEMA Pleno Carolina</h1>
     <nav class="navbar">
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
@@ -48,20 +46,50 @@
           <option value="12 a 16 pessoas">12 a 16 pessoas</option>
         </select>
 
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required>
+          <option value="">Selecione o estado</option>
+          <option value="AC">Acre</option>
+          <option value="AL">Alagoas</option>
+          <option value="AP">Amapá</option>
+          <option value="AM">Amazonas</option>
+          <option value="BA">Bahia</option>
+          <option value="CE">Ceará</option>
+          <option value="DF">Distrito Federal</option>
+          <option value="ES">Espírito Santo</option>
+          <option value="GO">Goiás</option>
+          <option value="MA">Maranhão</option>
+          <option value="MT">Mato Grosso</option>
+          <option value="MS">Mato Grosso do Sul</option>
+          <option value="MG">Minas Gerais</option>
+          <option value="PA">Pará</option>
+          <option value="PB">Paraíba</option>
+          <option value="PR">Paraná</option>
+          <option value="PE">Pernambuco</option>
+          <option value="PI">Piauí</option>
+          <option value="RJ">Rio de Janeiro</option>
+          <option value="RN">Rio Grande do Norte</option>
+          <option value="RS">Rio Grande do Sul</option>
+          <option value="RO">Rondônia</option>
+          <option value="RR">Roraima</option>
+          <option value="SC">Santa Catarina</option>
+          <option value="SP">São Paulo</option>
+          <option value="SE">Sergipe</option>
+          <option value="TO">Tocantins</option>
+        </select>
+
         <label for="cidade">Cidade:</label>
-        <input type="text" id="cidade" name="cidade" placeholder="Digite sua cidade" required>
+        <select id="cidade" name="cidade" required>
+          <option value="">Selecione o estado primeiro</option>
+        </select>
 
         <label for="data">Data do Evento Cultural:</label>
         <select id="data" name="data" required>
           <option value="">Selecione a data</option>
-          <option value="2025-11-20">20/11/2025 - Consciência Negra</option>
-          <option value="2025-06-24">24/06/2025 - Festas Juninas</option>
-          <option value="2025-09-07">07/09/2025 - Independência do Brasil</option>
-          <option value="2025-12-01">01/12/2025 - Evento Cultural IEMA</option>
+          <option value="01-12-2025">01/12/2025 - Projeto integralizado</option>
         </select>
 
         <button type="submit">Enviar</button>
-
         <div id="mensagem" class="mensagem"></div>
       </form>
 
@@ -85,7 +113,59 @@
     © 2025 - IEMA Pleno Carolina — Cultura e Tradição
   </footer>
 
-  <!-- Firebase Script -->
+  <!-- Script Estados e Cidades -->
+  <script>
+    const cidadesPorEstado = {
+      AC: ["Rio Branco", "Cruzeiro do Sul", "Sena Madureira"],
+      AL: ["Maceió", "Arapiraca", "Palmeira dos Índios"],
+      AP: ["Macapá", "Santana", "Oiapoque"],
+      AM: ["Manaus", "Parintins", "Itacoatiara"],
+      BA: ["Salvador", "Feira de Santana", "Vitória da Conquista", "Itabuna"],
+      CE: ["Fortaleza", "Juazeiro do Norte", "Sobral", "Crato"],
+      DF: ["Brasília"],
+      ES: ["Vitória", "Vila Velha", "Serra", "Cariacica"],
+      GO: ["Goiânia", "Anápolis", "Aparecida de Goiânia"],
+      MA: ["São Luís", "Imperatriz", "Timon", "Caxias", "Bacabal", "Balsas", "Carolina"],
+      MT: ["Cuiabá", "Rondonópolis", "Sinop"],
+      MS: ["Campo Grande", "Dourados", "Três Lagoas"],
+      MG: ["Belo Horizonte", "Uberlândia", "Juiz de Fora", "Montes Claros"],
+      PA: ["Belém", "Marabá", "Santarém", "Altamira"],
+      PB: ["João Pessoa", "Campina Grande", "Patos"],
+      PR: ["Curitiba", "Londrina", "Maringá", "Cascavel"],
+      PE: ["Recife", "Olinda", "Caruaru", "Petrolina"],
+      PI: ["Teresina", "Parnaíba", "Picos"],
+      RJ: ["Rio de Janeiro", "Niterói", "Campos dos Goytacazes"],
+      RN: ["Natal", "Mossoró", "Parnamirim"],
+      RS: ["Porto Alegre", "Caxias do Sul", "Pelotas"],
+      RO: ["Porto Velho", "Ji-Paraná", "Ariquemes"],
+      RR: ["Boa Vista"],
+      SC: ["Florianópolis", "Joinville", "Blumenau"],
+      SP: ["São Paulo", "Campinas", "Santos", "Sorocaba"],
+      SE: ["Aracaju", "Lagarto", "Itabaiana"],
+      TO: ["Palmas", "Araguaína", "Gurupi"]
+    };
+
+    const estadoSelect = document.getElementById("estado");
+    const cidadeSelect = document.getElementById("cidade");
+
+    estadoSelect.addEventListener("change", function () {
+      const estado = this.value;
+      cidadeSelect.innerHTML = "<option value=''>Selecione a cidade</option>";
+
+      if (estado && cidadesPorEstado[estado]) {
+        cidadesPorEstado[estado].forEach(cidade => {
+          const option = document.createElement("option");
+          option.value = cidade;
+          option.textContent = cidade;
+          cidadeSelect.appendChild(option);
+        });
+      } else {
+        cidadeSelect.innerHTML = "<option value=''>Selecione o estado primeiro</option>";
+      }
+    });
+  </script>
+
+  <!-- Firebase -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
     import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
@@ -119,8 +199,8 @@
 
       const nome = document.getElementById("nome").value;
       const quantidade = document.getElementById("quantidade").value;
+      const estado = document.getElementById("estado").value;
       const cidade = document.getElementById("cidade").value;
-
       const selectData = document.getElementById("data");
       const dataEvento = selectData.value;
       const nomeEvento = selectData.options[selectData.selectedIndex].text;
@@ -128,19 +208,19 @@
       const novaRef = push(ref(db, "agendamentos"));
 
       set(novaRef, {
-        nome: nome,
-        quantidade: quantidade,
-        cidade: cidade,
-        dataEvento: dataEvento,
-        nomeEvento: nomeEvento,
+        nome,
+        quantidade,
+        estado,
+        cidade,
+        dataEvento,
+        nomeEvento,
         enviadoEm: new Date().toISOString()
       })
         .then(() => {
           mostrarMensagem("✅ Agendamento enviado com sucesso!", "sucesso");
           form.reset();
         })
-        .catch((error) => {
-          console.error("Erro:", error);
+        .catch(() => {
           mostrarMensagem("❌ Erro ao salvar. Tente novamente.", "erro");
         });
     });
@@ -148,9 +228,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
