@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IEMA Pleno Carolina</title>
+  <title>Contato - IEMA Pleno Carolina</title>
   <link rel="stylesheet" href="contato.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -14,7 +14,7 @@
     <div class="logo">
       <img src="fotos/logo.png" alt="Logo IEMA" class="logo-img">
     </div>
-    <h1 class="titulo">IEMA Pleno Carolina</h1>
+    <h1 class="titulo">Contato - IEMA Pleno Carolina</h1>
     <nav class="navbar">
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
@@ -34,16 +34,28 @@
       <!-- Formulário -->
       <form id="formContato" name="Contato" class="contact-form" autocomplete="off">
 
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Digite seu Email" required>
+
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+
+        <label for="telefone">Telefone (opcional):</label>
+        <input type="text" id="telefone" name="telefone" placeholder="Digite seu telefone (opcional)">
 
         <label for="quantidade">Quantidade de Participantes:</label>
         <select id="quantidade" name="quantidade" required>
           <option value="">Selecione</option>
-          <option value="1 a 4 pessoas">1 a 4 pessoas</option>
-          <option value="4 a 8 pessoas">4 a 8 pessoas</option>
-          <option value="8 a 12 pessoas">8 a 12 pessoas</option>
-          <option value="12 a 16 pessoas">12 a 16 pessoas</option>
+          <option value="1 pessoas">1 pessoa</option>
+          <option value="2 pessoas">2 pessoas</option>
+          <option value="3 pessoas">3 pessoas</option>
+          <option value="4 pessoas">4 pessoas</option>
+           <option value="5 pessoas">5 pessoas</option>
+          <option value="6 pessoas">6 pessoas</option>
+          <option value="7 pessoas">7 pessoas</option>
+          <option value="8 pessoas">8 pessoas</option>
+          <option value="9 pessoas">9 pessoas</option>
+          <option value="10 pessoas">10 pessoas</option>
         </select>
 
         <label for="estado">Estado:</label>
@@ -86,7 +98,7 @@
         <label for="data">Data do Evento Cultural:</label>
         <select id="data" name="data" required>
           <option value="">Selecione a data</option>
-          <option value="01-12-2025">19/11/2025 - Projeto integralizador-FECULEMA</option>
+          <option value="01-12-2025">01/12/2025 - Projeto integralizado-FECULEMA</option>
         </select>
 
         <button type="submit">Enviar</button>
@@ -197,7 +209,9 @@
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
+      const email = document.getElementById("email").value;
       const nome = document.getElementById("nome").value;
+      const telefone = document.getElementById("telefone").value;
       const quantidade = document.getElementById("quantidade").value;
       const estado = document.getElementById("estado").value;
       const cidade = document.getElementById("cidade").value;
@@ -208,7 +222,9 @@
       const novaRef = push(ref(db, "agendamentos"));
 
       set(novaRef, {
+        email,
         nome,
+        telefone: telefone || "Não informado",
         quantidade,
         estado,
         cidade,
@@ -228,7 +244,3 @@
 
 </body>
 </html>
-
-
-
-
